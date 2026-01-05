@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import ClassCounter from "./components/ClassCounter";
+import "./styles/App.css";
+import PostItem from "./components/PostItem";
 function App() {
-  const [value, setValue] = useState("text in input");
+  const [posts, setPosts] = useState([
+    { id: 1, title: "JavaScript", body: "Description" },
+    { id: 2, title: "JavaScript 2", body: "Description" },
+    { id: 3, title: "JavaScript 3", body: "Description" },
+  ]);
 
   return (
     <div className="App">
-      <div className="post">
-        <div className="post__content">
-          <strong>JavaScript</strong>
-          <div>
-            <p>JS - programming language</p>
-          </div>
-        </div>
-      </div>
-      <div className="post__btns">
-        <button>Delete</button>
-      </div>
+      {posts.map((post) => (
+        <PostItem post={post} key={post.id} />
+      ))}
     </div>
   );
 }
